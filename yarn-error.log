@@ -1,0 +1,74 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js add @nexcodepl/vite-static-component
+
+PATH: 
+  /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/alexstefanski/Library/Android/sdk/emulator:/Users/alexstefanski/Library/Android/sdk/tools:/Users/alexstefanski/Library/Android/sdk/tools/bin:/Users/alexstefanski/Library/Android/sdk/platform-tools:/Users/alexstefanski/Library/Android/sdk/emulator:/Users/alexstefanski/Library/Android/sdk/tools:/Users/alexstefanski/Library/Android/sdk/tools/bin:/Users/alexstefanski/Library/Android/sdk/platform-tools
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  18.15.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@nexcodepl%2fvite-static-component: Not found
+      at params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:66988:18)
+      at self.callback (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:140749:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141721:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:141643:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+      "name": "@nexcodepl/prismic-components",
+      "version": "1.0.0",
+      "main": "./dist/index.js",
+      "typings": "./dist/index.d.ts",
+      "repository": "https://github.com/NexCodePL/prismic-components.git",
+      "author": "Alexander Stefański <alex@nexcode.pl>",
+      "license": "MIT",
+      "type": "module",
+      "keywords": [
+          "nexcodepl",
+          "prismic",
+          "components"
+          
+      ],
+      "private": false,
+      "scripts": {
+          "build": "tsc",
+          "lint": "yarn eslint . --ext .ts",
+          "prepublishOnly": "yarn lint",
+          "preversion": "yarn lint",
+          "publish:npm": "npm publish --access public"
+      },
+      "dependencies": {
+  
+          "react": "^18.2.0"
+      },
+      "devDependencies": {
+          "@types/react": "^18.0.31",
+          "@typescript-eslint/eslint-plugin": "^5.57.0",
+          "@typescript-eslint/parser": "^5.57.0",
+          "eslint": "^8.37.0",
+          "prettier": "^2.8.7",
+          "typescript": "^5.0.3"
+      },
+      "files": [
+          "dist/**/*"
+      ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

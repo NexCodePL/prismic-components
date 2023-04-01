@@ -1,0 +1,62 @@
+.rich-text {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        padding: 0;
+        margin: 0;
+        font-weight: normal;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+    }
+
+    h1 {
+        @include font-size-80;
+        font-weight: bold;
+    }
+    h2 {
+        @include font-size-50;
+    }
+
+    h3 {
+        @include font-size-50;
+    }
+
+    h4 {
+        @include font-size-34;
+    }
+
+    h5 {
+        @include font-size-18;
+    }
+
+    h6 {
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    & > * {
+        &:last-child {
+        }
+    }
+
+    ul {
+    }
+
+    a {
+        // color: $color-red-e10;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
