@@ -1,9 +1,11 @@
 import React from "react";
-import { Link as LinkType } from "@nexcodepl/prismic-custom-type";
+import { Link as PrismicLinkType } from "@nexcodepl/prismic-custom-type";
 import { Link as RouterLink } from "@nexcodepl/vite-static-components";
 
+export type LinkType = PrismicLinkType | LinkRichText | string | null;
+
 interface Props {
-    link: LinkType | LinkRichText | string | null;
+    link: LinkType;
     className?: string;
     children: JSX.Element | string;
     onClick?: () => void;
@@ -70,8 +72,8 @@ export const Link: React.FC<Props> = ({ link, className, children, onClick }) =>
     );
 };
 
-function linkIsLink(link: unknown): link is LinkType {
-    return !!(link as LinkType)?.type;
+function linkIsLink(link: unknown): link is PrismicLinkType {
+    return !!(link as PrismicLinkType)?.type;
 }
 
 function linkIsLinkRichText(link: unknown): link is LinkRichText {
