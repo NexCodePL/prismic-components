@@ -1,76 +1,66 @@
 import React from "react";
 import { Link as PrismicLinkType } from "@nexcodepl/prismic-custom-type";
-import { Link as RouterLink } from "@nexcodepl/vite-static-components";
+import { LinkComponent } from "@nexcodepl/vite-static-components";
 
 export type LinkType = PrismicLinkType | LinkRichText | string | null;
 
-interface Props {
+export interface PrismicLinkProps {
     link: LinkType;
     className?: string;
     children: JSX.Element | string;
     onClick?: () => void;
 }
 
-export const Link: React.FC<Props> = ({ link, className, children, onClick }) => {
-    if (!link) return null;
+export type PrismicLinkComponent = ReturnType<typeof getLink>;
 
-    if (typeof link === "string") {
-        return (
-            <RouterLink className={`${className ?? ""}`} to={link} onClick={onClick}>
-                {children}
-            </RouterLink>
-        );
-    }
+export function getLink(linkComponent: LinkComponent) {
+    const Link: React.FC<PrismicLinkProps> = ({ link, className, children, onClick }) => {
+        if (!link) return null;
 
-    if (linkIsLinkRichText(link)) {
-        if (link.link_type === "Document") {
-            return (
-                <RouterLink className={`${className ?? ""}`} to={{ id: link.id }} onClick={onClick}>
-                    {children}
-                </RouterLink>
-            );
+        if (typeof link === "string") {
+            return linkComponent({ className, to: link, onClick, children });
         }
 
-        if (link.link_type === "Web" || link.link_type === "Media") {
-            return (
-                <a
-                    href={link.url}
-                    className={className ?? ""}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    onClick={onClick}>
-                    {children}
-                </a>
-            );
-        }
-    } else if (linkIsLink(link)) {
-        if (link.type === "web" || link.type === "media") {
-            return (
-                <a
-                    href={link.url}
-                    className={className ?? ""}
-                    target="_blank"
-                    rel="nofollow noopener noreferrer"
-                    onClick={onClick}>
-                    {children}
-                </a>
-            );
-        }
-        if (link.type === "document") {
-            return (
-                <RouterLink className={`${className ?? ""}`} to={{ id: link.id }} onClick={onClick}>
-                    {children}
-                </RouterLink>
-            );
-        }
-    }
+        if (linkIsLinkRichText(link)) {
+            if (link.link_type === "Document") {
+                return linkComponent({ className, to: { id: link.id }, onClick, children });
+            }
 
-    return (
-        <RouterLink className={`${className ?? ""}`} to={link} onClick={onClick}>
-            {children}
-        </RouterLink>
-    );
-};
+            if (link.link_type === "Web" || link.link_type === "Media") {
+                return (
+                    <a
+                        href={link.url}
+                        className={className ?? ""}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        onClick={onClick}>
+                        {children}
+                    </a>
+                );
+            }
+        } else if (linkIsLink(link)) {
+            if (link.type === "web" || link.type === "media") {
+                return (
+                    <a
+                        href={link.url}
+                        className={className ?? ""}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        onClick={onClick}>
+                        {children}
+                    </a>
+                );
+            }
+            if (link.type === "document") {
+                return linkComponent({ className, to: { id: link.id }, onClick, children });
+            }
+        }
+
+        return linkComponent({ className, to: link, onClick, children });
+    };
+
+    return Link;
+}
 
 function linkIsLink(link: unknown): link is PrismicLinkType {
     return !!(link as PrismicLinkType)?.type;

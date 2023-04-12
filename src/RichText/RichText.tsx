@@ -1,33 +1,39 @@
 import React from "react";
-import { RichText as PrismicRichTextComponent, RichTextBlock } from "prismic-reactjs";
+import PrsimicReactjs from "prismic-reactjs";
 import { PrismicRichTextType } from "@nexcodepl/prismic-custom-type";
-import { Link } from "../Link";
+import { PrismicLinkComponent } from "../Link";
 
-import "./RichText.scss";
+const PrismicRichTextComponent = PrsimicReactjs.RichText;
+type RichTextBlock = PrsimicReactjs.RichTextBlock;
+// import "./RichText.scss";
 
-interface Props {
+export interface RichTextProps {
     text: PrismicRichTextType;
     className?: string;
     ignoreDefaultStyle?: boolean;
 }
 
-export const RichText: React.FC<Props> = ({ text, className, ignoreDefaultStyle }) => {
-    if (!text) return null;
+export function getRichText(LinkComponent: PrismicLinkComponent): React.FC<RichTextProps> {
+    const RichText: React.FC<RichTextProps> = ({ text, className, ignoreDefaultStyle }) => {
+        if (!text) return null;
 
-    return (
-        <div className={`${ignoreDefaultStyle ? "" : "rich-text"} ${className ?? ""}`}>
-            {typeof text === "string" ? (
-                text
-            ) : (
-                <PrismicRichTextComponent
-                    render={text as RichTextBlock[]}
-                    serializeHyperlink={(type, element, content, children, index) => (
-                        <Link key={index} link={element.data}>
-                            {content}
-                        </Link>
-                    )}
-                />
-            )}
-        </div>
-    );
-};
+        return (
+            <div className={`${ignoreDefaultStyle ? "" : "rich-text"} ${className ?? ""}`}>
+                {typeof text === "string" ? (
+                    text
+                ) : (
+                    <PrismicRichTextComponent
+                        render={text as RichTextBlock[]}
+                        serializeHyperlink={(type, element, content, children, index) => (
+                            <LinkComponent key={index} link={element.data}>
+                                {content}
+                            </LinkComponent>
+                        )}
+                    />
+                )}
+            </div>
+        );
+    };
+
+    return RichText;
+}

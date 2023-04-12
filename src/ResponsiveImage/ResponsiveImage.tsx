@@ -1,7 +1,7 @@
 import { PrismicImageType } from "@nexcodepl/prismic-custom-type";
 import React from "react";
 
-import "./ResponsiveImage.scss";
+// import "./ResponsiveImage.scss";
 
 const sizes = [2560, 2300, 2100, 1920, 1600, 1330, 1024, 768, 480, 320];
 
