@@ -452,25 +452,25 @@
   dependencies:
     react "^18.2.0"
 
-"@nexcodepl/vite-static-components@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@nexcodepl/vite-static-components/-/vite-static-components-1.0.7.tgz#2e0fef7f3aa00a330581b735b2a227168f03ed43"
-  integrity sha512-DJ6R4C+GMYf0f2HMZCPQEjw/7PTPjNnk92V3pSWpSLMi5YC3PhHIJbKJBcAf5WvnHYyoatZ2VvMXqZc52omBFQ==
+"@nexcodepl/vite-static-components@^1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@nexcodepl/vite-static-components/-/vite-static-components-1.0.16.tgz#dfcd68bf59e24d17f7a44db121e86e76bc81f3e8"
+  integrity sha512-ptP1aBWXYx+z0tY58AcZ6ip1K0HBojxcol88u3EnCZthhuQ9BUnM+3aTWa99HIUGPPIbWGFy5sfzYEnLBaBB+g==
   dependencies:
     "@nexcodepl/endpoint-client" "^2.0.3"
     "@nexcodepl/endpoint-types" "^1.0.0"
     "@nexcodepl/react-store" "^1.0.2"
-    "@nexcodepl/vite-static" "^1.0.6"
+    "@nexcodepl/vite-static" "^1.0.11"
     "@vitejs/plugin-react" "^3.1.0"
     react "^18.2.0"
     react-dom "^18.2.0"
     react-router-dom "^6.10.0"
     vite "^4.2.1"
 
-"@nexcodepl/vite-static@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@nexcodepl/vite-static/-/vite-static-1.0.6.tgz#fa131ac00c2a7411c1a373ea5ff5d6b45c235a16"
-  integrity sha512-FSWjw7FwRT5QpoDZMqB7tAXkUQdo3TunVuzu2Rm5eOwt1AVTma5JfJ7Y3IAuq6mBHNDiyXodAAjc9rW5oTenwA==
+"@nexcodepl/vite-static@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@nexcodepl/vite-static/-/vite-static-1.0.11.tgz#8d3ef8c60c3e956da3f41ddf2c454db32310ca13"
+  integrity sha512-hE8b5nUjxnb5EtqXPSo73r+vh4y2lhKBsdtqD+nydelTP603FPOMKRmOep8SaFDCm0VTvv1oTwYOixQzZal5Gw==
   dependencies:
     "@nexcodepl/fs" "^1.0.0"
     "@vitejs/plugin-react" "^3.1.0"

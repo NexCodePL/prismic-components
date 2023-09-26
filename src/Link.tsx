@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as PrismicLinkType } from "@nexcodepl/prismic-custom-type";
-import { LinkComponent } from "@nexcodepl/vite-static-components";
+import { LinkComponent, LinkPropsOptional } from "@nexcodepl/vite-static-components";
 
 export type LinkType = PrismicLinkType | LinkRichText | string | null;
 
@@ -9,26 +9,28 @@ export interface PrismicLinkProps {
     className?: string;
     children: JSX.Element | string;
     onClick?: () => void;
+    propsRaw?: LinkPropsOptional;
 }
 
 export type PrismicLinkComponent = ReturnType<typeof getLink>;
 
 export function getLink(linkComponent: LinkComponent) {
-    const Link: React.FC<PrismicLinkProps> = ({ link, className, children, onClick }) => {
+    const Link: React.FC<PrismicLinkProps> = ({ link, className, children, onClick, propsRaw }) => {
         if (!link) return null;
 
         if (typeof link === "string") {
-            return linkComponent({ className, to: link, onClick, children });
+            return linkComponent({ className, to: link, onClick, children, propsRaw });
         }
 
         if (linkIsLinkRichText(link)) {
             if (link.link_type === "Document") {
-                return linkComponent({ className, to: { id: link.id }, onClick, children });
+                return linkComponent({ className, to: { id: link.id }, onClick, children, propsRaw });
             }
 
             if (link.link_type === "Web" || link.link_type === "Media") {
                 return (
                     <a
+                        {...propsRaw}
                         href={link.url}
                         className={className ?? ""}
                         target="_blank"
@@ -42,6 +44,7 @@ export function getLink(linkComponent: LinkComponent) {
             if (link.type === "web" || link.type === "media") {
                 return (
                     <a
+                        {...propsRaw}
                         href={link.url}
                         className={className ?? ""}
                         target="_blank"
@@ -52,11 +55,11 @@ export function getLink(linkComponent: LinkComponent) {
                 );
             }
             if (link.type === "document") {
-                return linkComponent({ className, to: { id: link.id }, onClick, children });
+                return linkComponent({ className, to: { id: link.id }, onClick, children, propsRaw });
             }
         }
 
-        return linkComponent({ className, to: link, onClick, children });
+        return linkComponent({ className, to: link, onClick, children, propsRaw });
     };
 
     return Link;
