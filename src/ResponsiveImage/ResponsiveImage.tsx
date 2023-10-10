@@ -12,6 +12,7 @@ interface PropsBase<TBehaviour> {
     classNameImg?: string;
     image?: PrismicImageType;
     highRes?: boolean;
+    useCopyrightAsTitle?: boolean;
 }
 
 interface PropsCoverContain extends PropsBase<"cover" | "contain"> {}
@@ -41,6 +42,7 @@ interface RawImageProps {
     image: PrismicImageType;
     eagerLoad?: boolean;
     highRes?: boolean;
+    useCopyrightAsTitle?: boolean;
 }
 
 export const ResponsiveImageCoverContain: React.FC<PropsCoverContain> = props => {
@@ -60,6 +62,7 @@ export const ResponsiveImageCoverContain: React.FC<PropsCoverContain> = props =>
                 className={imageClassNames.join(" ")}
                 eagerLoad={props.eagerLoad}
                 highRes={props.highRes}
+                useCopyrightAsTitle={props.useCopyrightAsTitle}
             />
         </div>
     );
@@ -80,6 +83,7 @@ export const ResponsiveImageHeight: React.FC<PropsHeight> = props => {
                 className={imageClassNames.join(" ")}
                 eagerLoad={props.eagerLoad}
                 highRes={props.highRes}
+                useCopyrightAsTitle={props.useCopyrightAsTitle}
             />
         </div>
     );
@@ -110,20 +114,25 @@ export const ResponsiveImageRatio: React.FC<PropsRatio> = props => {
                 className={imageClassNames.join(" ")}
                 eagerLoad={props.eagerLoad}
                 highRes={props.highRes}
+                useCopyrightAsTitle={props.useCopyrightAsTitle}
             />
         </div>
     );
 };
 
-export const RawImage: React.FC<RawImageProps> = ({ className, image, eagerLoad, highRes }) => {
+export const RawImage: React.FC<RawImageProps> = ({ className, image, eagerLoad, highRes, useCopyrightAsTitle }) => {
     if (!image) {
         return null;
     }
+
+    const title = useCopyrightAsTitle ? image?.copyright ?? undefined : undefined;
+
     if (image.url.substring(image.url.length - 3, image.url.length).toLowerCase() === "svg" || highRes) {
         return (
             <img
                 src={`${image.url}`}
                 alt={image.alt ?? ""}
+                title={title}
                 className={`responsive-image-raw ${className ?? ""}`}
                 loading={eagerLoad ? "eager" : "lazy"}
             />
@@ -137,6 +146,7 @@ export const RawImage: React.FC<RawImageProps> = ({ className, image, eagerLoad,
             src={`${image.url}&w=1330`}
             alt={image.alt ?? ""}
             className={`responsive-image-raw ${className ?? ""}`}
+            title={title}
             srcSet={srcSet}
             loading={eagerLoad ? "eager" : "lazy"}
         />
