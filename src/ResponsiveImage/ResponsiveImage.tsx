@@ -5,7 +5,7 @@ import React from "react";
 
 const sizes = [2560, 2300, 2100, 1920, 1600, 1330, 1024, 768, 480, 320];
 
-interface PropsBase<TBehaviour> {
+export interface PropsBase<TBehaviour> {
     eagerLoad?: boolean;
     behaviour: TBehaviour;
     className?: string;
@@ -15,17 +15,17 @@ interface PropsBase<TBehaviour> {
     useCopyrightAsTitle?: boolean;
 }
 
-interface PropsCoverContain extends PropsBase<"cover" | "contain"> {}
+export interface PropsCoverContain extends PropsBase<"cover" | "contain"> {}
 
-interface PropsRatio extends PropsBase<"ratio"> {
+export interface PropsRatio extends PropsBase<"ratio"> {
     maxRatio?: number;
     maxRatioAlignVertical?: "left" | "center" | "right";
     maxRatioAlignHorizontal?: "top" | "center" | "bottom";
 }
 
-interface PropsHeight extends PropsBase<"height"> {}
+export interface PropsHeight extends PropsBase<"height"> {}
 
-type Props = PropsCoverContain | PropsRatio | PropsHeight;
+export type Props = PropsCoverContain | PropsRatio | PropsHeight;
 
 export const ResponsiveImage: React.FC<Props> = props => {
     if (props.behaviour === "ratio") {
@@ -37,7 +37,7 @@ export const ResponsiveImage: React.FC<Props> = props => {
     }
 };
 
-interface RawImageProps {
+export interface RawImageProps {
     className?: string;
     image: PrismicImageType;
     eagerLoad?: boolean;

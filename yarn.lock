@@ -435,14 +435,15 @@
   resolved "https://registry.yarnpkg.com/@nexcodepl/fs/-/fs-1.0.2.tgz#30921258d8c8afc8b823d23f098f6ff8c9d029a2"
   integrity sha512-8Z3focBQEzL+FG6FlTPHYmP7cvN7kUYlJQKV7Q09wKWNOq0F/bbEIHVQOVnoywjZvDz2rKfT/2O9zqFoRvgSrA==
 
-"@nexcodepl/prismic-custom-type@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@nexcodepl/prismic-custom-type/-/prismic-custom-type-1.0.6.tgz#3381cea7e2e9962ae372f5fef8daa41341cde990"
-  integrity sha512-l2Ku+CDLZO+Leda6fxAWl2wPaFKUSi2saDsVLgZ8hU9Rnoqit8c2VrFPFLuErn/fJLlfMKIFQ3VIIJ7Ju2jBcg==
+"@nexcodepl/prismic-custom-type@^1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@nexcodepl/prismic-custom-type/-/prismic-custom-type-1.0.26.tgz#c3408256441a038f59e3a2da03e56bffc923e9b9"
+  integrity sha512-FAVwK0Zug9lOkh04ZglFkOTZGJR2xiGMVwUjMjkYJchgx8A3Ld4Knlpvtmxz4Ftz9WjDM+IQ2gldY6vOBPfAAA==
   dependencies:
     "@nexcodepl/fs" "^1.0.0"
     "@prismicio/client" "^6.7.3"
     axios "^1.1.3"
+    lodash.clonedeep "^4.5.0"
     node-fetch "2.6.8"
 
 "@nexcodepl/react-store@^1.0.2":
@@ -1309,6 +1310,11 @@ locate-path@^6.0.0:
   integrity sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==
   dependencies:
     p-locate "^5.0.0"
+
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+  integrity sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==
 
 lodash.merge@^4.6.2:
   version "4.6.2"
